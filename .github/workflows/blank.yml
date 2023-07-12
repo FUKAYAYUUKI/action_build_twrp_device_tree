@@ -26,8 +26,11 @@ jobs:
       
     - name: Download boot or recovery img
       run: |
-        aria2c "${{ github.event.inputs.IMG_URL }}"
-        ls
+        
+        curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=10llctXmAxUl6jGjWMxL8yix4srG3rKgo" > /dev/null
+        CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"  
+        curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=10llctXmAxUl6jGjWMxL8yix4srG3rKgo" -o <FILE_NAME>
+
       
     - name: Start build
       run: |
