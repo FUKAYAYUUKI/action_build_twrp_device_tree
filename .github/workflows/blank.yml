@@ -29,7 +29,7 @@ jobs:
         
         curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=10llctXmAxUl6jGjWMxL8yix4srG3rKgo" > /dev/null
         CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"  
-        curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=10llctXmAxUl6jGjWMxL8yix4srG3rKgo" -o <FILE_NAME>
+        curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=10llctXmAxUl6jGjWMxL8yix4srG3rKgo" -o recovery.img
 
       
     - name: Start build
