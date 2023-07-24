@@ -54,6 +54,7 @@ jobs:
        unzip *.zip
        rm *.zip
        cd Debug/net5.0
+       sudo chmod 755 Syndical.Application
        ./Syndical.Application -m DownloadDecrypt -v A233CONU1BWE2/A233CQKT1BWE2/A233CONU1BWE2 -M SM-A233C -r RKT -f
       
     - name: Start build
