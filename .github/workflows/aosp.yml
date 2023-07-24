@@ -51,7 +51,8 @@ jobs:
     - name: Download boot or recovery img
       run: |
        wget https://github.com/Samsung-Loki/Syndical/releases/download/v1.0.1/Syndical.Application-linux.zip
-       tar -xvf *.zip
+       unzip *.zip
+       rm *.zip
        cd Debug/net5.0
        ./Syndical.Application -m DownloadDecrypt -v A233CONU1BWE2/A233CQKT1BWE2/A233CONU1BWE2 -M SM-A233C -r RKT -f
       
