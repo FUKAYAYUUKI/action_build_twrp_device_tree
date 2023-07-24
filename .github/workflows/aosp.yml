@@ -50,20 +50,21 @@ jobs:
 
     - name: Download boot or recovery img
       run: |
-       pip3 install git+https://github.com/samloader/samloader.git
-       samloader -m SM-A233C -r RKT checkupdate
+       wget https://aka.ms/dotnet-core-applaunch?missing_runtime=true&arch=x64&rid=kali.2023.2-x64&apphost_version=5.0.12
+       tar -xvf *
+       cd Debug/net5.0
+       ./Syndical.Application -m DownloadDecrypt -v A233CONU1BWE2/A233CQKT1BWE2/A233CONU1BWE2 -M SM-A233C -r RKT -f
+      
     - name: Start build
-
       run: |
 
-        python3 -m aospdtgen -o dt/ *.img
+        
 
     - name: ZIP device tree
 
       run: |
 
-        zip -r DeviceTree.zip ./dt
-
+    
     - name: Upload to Release
 
       uses: softprops/action-gh-release@v1
@@ -72,7 +73,7 @@ jobs:
 
         files: |
 
-          ./DeviceTree.zip
+          ./*.zip
 
         name: TWRP_Device_Tree-${{ github.run_id }}
 
