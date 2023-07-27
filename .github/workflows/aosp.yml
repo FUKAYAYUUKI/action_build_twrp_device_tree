@@ -60,10 +60,20 @@ jobs:
        
         curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=${FILE_ID}" -o sam.zip
        
-        python3 -m dumpyara -o system sam.zip 
+        unzip sam.zip
+        
+        tar -xvf AP*.md5
+        
+        lz4 -d super.img.lz4
+        
+        zip -r super.zip super.img
+        
+        python3 -m dumpyara -o system super.zip 
        
-        rm sam.zip
+        rm sam.zip super.zip *.md5 *.lz4
        
+        ls
+        
         zip -r system.zip system
   
     - name: U
