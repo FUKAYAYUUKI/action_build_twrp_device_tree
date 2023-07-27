@@ -50,30 +50,26 @@ jobs:
 
     - name: Download boot or recovery img
        
+    run: |
+       
        FILE_ID=1_hUJpqV30zFszkBNFmFUG_swy1TLKD9P
+       
        curl -sc /tmp/cookie "https://drive.google.com/uc?export=download&id=${FILE_ID}" > /dev/null
+      
        CODE="$(awk '/_warning_/ {print $NF}' /tmp/cookie)"
+       
        curl -Lb /tmp/cookie "https://drive.google.com/uc?export=download&confirm=${CODE}&id=${FILE_ID}" -o sam.zip
+       
        python3 -m dumpyara -o system sam.zip 
+       
        rm sam.zip
+       
        zip -r system.zip system 
-    - name: Start build
-      run: |
-
-        
-
-    - name: ZIP device tree
-
-      run: |
-
     
     - name: Upload to Release
-
       uses: softprops/action-gh-release@v1
-
       with:
-
-        files: |
+     files: |
 
           ./system.zip
 
