@@ -50,7 +50,7 @@ jobs:
 
     - name: Download boot or recovery img
        
-    run: |
+      run: |
        
        FILE_ID=1_hUJpqV30zFszkBNFmFUG_swy1TLKD9P
        
@@ -64,21 +64,16 @@ jobs:
        
        rm sam.zip
        
-       zip -r system.zip system 
-    
-    - name: Upload to Release
-      uses: softprops/action-gh-release@v1
-      with:
-     files: |
+       zip -r system.zip system
+    - name: U
+    uses: softprops/action-gh-release@v1
+    with:
+    files: |
+       ./system.zip
 
-          ./system.zip
-
-        name: TWRP_Device_Tree-${{ github.run_id }}
-
-        tag_name: ${{ github.run_id }}
-
-        body: DeviceTree for twrp
-
-      env:
+    name: TWRP_Device_Tree-${{ github.run_id }}
+    tag_name: ${{ github.run_id }}
+    body: DeviceTree for twrp
+     env:
 
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
