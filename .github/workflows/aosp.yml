@@ -64,7 +64,7 @@ jobs:
         
         tar -xvf AP*.md5
         
-        lz4 -d super.img.lz4
+        lz4 -d super.img.lz4 super.img
         
         zip -r super.zip super.img
         
