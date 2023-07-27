@@ -64,9 +64,15 @@ jobs:
         
         tar -xvf AP*.md5
         
+        rm *.md5 *.zip
+        
         lz4 -d super.img.lz4 super.img
         
+        rm *.lz4
+        
         zip -r super.zip super.img
+        
+        rm *.img
         
         python3 -m dumpyara -o system super.zip 
        
